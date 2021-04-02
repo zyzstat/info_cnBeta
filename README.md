@@ -8,3 +8,5 @@ Try to moyu with news on cnbeta.com
 在代码目录下运行cnbeta.py即可
 run cnbeta.py
 `python cnbeta.py`
+同目录会生成cnbeta_txt.txt
+cnbeta_txt.txt will be generated at the same folder of python file
