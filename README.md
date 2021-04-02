@@ -1,4 +1,4 @@
-# moyu_Cnbeta
+# moyu_cnBeta
 Try to moyu with news on cnbeta.com
 
 
