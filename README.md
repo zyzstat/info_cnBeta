@@ -9,4 +9,4 @@ Try to moyu with news on cnbeta.com
 run cnbeta.py
 `python cnbeta.py`
 同目录会生成cnbeta_txt.txt
-cnbeta_txt.txt will be generated at the same folder of python file
+cnbeta_txt.txt will be generated at the same folder of cnbeta.py
