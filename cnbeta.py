@@ -31,7 +31,9 @@ def get_text(href):
             except:
                 pass
             if strip_mark == 1:
-                writer.write(text.strip("\n").strip())
+                if text.strip("\n").strip() != '':
+                    writer.write(text.strip("\n").strip())
+                    writer.write("\n---------------------------------------")
             else:
                 writer.write(text)
 
