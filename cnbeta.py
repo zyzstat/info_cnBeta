@@ -39,8 +39,6 @@ def get_text(href):
 
 
 get_text("http://cnbeta.com")
-fufu = """
-^ↀᴥↀ^
-"""
-print("All recent cnbeta data get, Miao~\n\n{}".format(fufu))
+
+print("All recent cnbeta data get, Miao~\n\n")
 
