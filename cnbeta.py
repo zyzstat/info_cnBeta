@@ -40,5 +40,5 @@ def get_text(href):
 
 get_text("http://cnbeta.com")
 
-print("All recent cnbeta data get, :) Test")
+print("All recent cnbeta data get, :)")
 
