@@ -16,6 +16,7 @@ def get_text(href):
     category = input(
         """
 Enter a category:
+                    tech -> 科技
                     movie -> 影视
                     music -> 音乐
                     game -> 游戏
