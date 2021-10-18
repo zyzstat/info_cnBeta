@@ -16,13 +16,14 @@ def get_text(href):
     category = input(
         """
 Enter a category:
-                    movie -- 影视
-                    music -- 音乐
-                    game -- 游戏
-                    comic -- 动漫
-                    funny -- 趣闻
-                    science -- 科学
-                    soft -- 软件\n
+                    movie -> 影视
+                    music -> 音乐
+                    game -> 游戏
+                    comic -> 动漫
+                    funny -> 趣闻
+                    science -> 科学
+                    soft -> 软件
+                    直接按回车 -> 全整上，但是新闻数量少一些\n
 >>"""
     )
     try:
