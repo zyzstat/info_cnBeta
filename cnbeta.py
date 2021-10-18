@@ -28,8 +28,30 @@ Enter a category:
 >>"""
     )
     try:
-        if category != "":
+        if category in [
+            "tech",
+            "movie",
+            "music",
+            "game",
+            "comic",
+            "funny",
+            "science",
+            "soft",
+        ]:
             href = href + "/category/{}.htm".format(category)
+        elif category not in [
+            "tech",
+            "movie",
+            "music",
+            "game",
+            "comic",
+            "funny",
+            "science",
+            "soft",
+            "",
+        ]:
+            raise (Exception("Input error, try again"))
+        print("Wait for it")
         request = handle_request(href)
         content = urllib.request.urlopen(request).read().decode("utf8")
         soup = BeautifulSoup(content, "lxml")
@@ -71,10 +93,9 @@ Enter a category:
                         if text.strip("\n").strip() != "":
                             writer.write(text.strip("\n").strip())
                             writer.write("\n----------------------------------------")
-    except:
-        "Input error, try again"
+        print("\nEnjoy it\n:)")
+    except Exception as e:
+        print(e)
 
 
 get_text("http://cnbeta.com")
-
-print("\nEnjoy it\n:)")
