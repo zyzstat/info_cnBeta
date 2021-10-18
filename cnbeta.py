@@ -24,7 +24,7 @@ Enter a category:
                     funny -> 趣闻
                     science -> 科学
                     soft -> 软件
-                    直接按回车 -> 只看最近的新闻\n
+                    Enter -> Only recent News\n
 >>"""
     )
     try:
