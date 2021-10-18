@@ -53,7 +53,7 @@ Enter a category:
                     else:
                         writer.write(text)
             else:
-                writer.write("------------------{}-----------------".format(category))
+                writer.write("------------------{}------------------".format(category))
                 strip_mark = 0
                 for cont in odiv:
                     if "详细内容" in cont.text:
