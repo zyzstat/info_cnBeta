@@ -42,3 +42,4 @@ get_text("http://cnbeta.com")
 
 print("All recent cnbeta data get, :)!!!")
 
+test1
