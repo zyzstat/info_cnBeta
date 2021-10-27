@@ -99,3 +99,5 @@ Enter a category:
 
 
 get_text("http://cnbeta.com")
+
+test
