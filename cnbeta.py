@@ -100,4 +100,6 @@ Enter a category:
 
 get_text("http://cnbeta.com")
 
-test
+print("All recent cnbeta data get, :)!!!")
+
+test1
