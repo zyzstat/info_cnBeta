@@ -13,6 +13,16 @@ def handle_request(url):
 
 
 def get_text(href):
+    #     img_txt = input(
+    #         """
+    # HTML or Just TEXT ?
+    # H -> HTML
+    # T -> TEXT\n
+    # >>"""
+    #     )
+    img_txt = "T"
+    if img_txt not in ["H", "T"]:
+        raise Exception("Input error, try again")
     category = input(
         """
 Enter a category:
@@ -53,51 +63,67 @@ Enter a category:
             raise (Exception("Input error, try again"))
         print("Wait for it")
         request = handle_request(href)
-        content = urllib.request.urlopen(request).read().decode("utf8")
-        soup = BeautifulSoup(content, "lxml")
-        odiv = soup.find_all("div", class_="item")
-        with open("./cnbeta_txt.txt", "w") as writer:
-            if category == "":
-                writer.write("------------------热门-----------------\n")
-                strip_mark = 0
-                for cont in odiv:
-                    if "详细内容" in cont.text:
-                        strip_mark = 1
-                    text = cont.text.replace("\n\n\n", "\n")
-                    if "详细内容" in text:
-                        writer.write("\n\n\n\n------------------简讯------------------\n")
-                    try:
-                        text = text[: text.index("详细内容")]
-                    except:
-                        pass
-                    if strip_mark == 1:
-                        if text.strip("\n").strip() != "":
-                            writer.write(text.strip("\n").strip())
-                            writer.write("\n----------------------------------------")
-                    else:
-                        writer.write(text)
-            else:
-                writer.write("------------------{}------------------".format(category))
-                strip_mark = 0
-                for cont in odiv:
-                    if "详细内容" in cont.text:
-                        strip_mark = 1
-                    text = cont.text.replace("\n\n\n", "\n")
-                    if "详细内容" in text:
-                        writer.write("\n\n\n\n------------------简讯------------------\n")
-                    try:
-                        text = text[: text.index("详细内容")]
-                    except:
-                        pass
-                    if strip_mark == 1:
-                        if text.strip("\n").strip() != "":
-                            writer.write(text.strip("\n").strip())
-                            writer.write("\n----------------------------------------")
+        if img_txt == "T":
+            content = urllib.request.urlopen(request).read().decode("utf8")
+            soup = BeautifulSoup(content, "lxml")
+            odiv = soup.find_all("div", class_="item")
+            with open("./cnbeta_txt.txt", "w") as writer:
+                if category == "":
+                    writer.write("------------------热门-----------------\n")
+                    strip_mark = 0
+                    for cont in odiv:
+                        if "详细内容" in cont.text:
+                            strip_mark = 1
+                        text = cont.text.replace("\n\n\n", "\n")
+                        if "详细内容" in text:
+                            writer.write(
+                                "\n\n\n\n------------------简讯------------------\n"
+                            )
+                        try:
+                            text = text[: text.index("详细内容")]
+                        except:
+                            pass
+                        if strip_mark == 1:
+                            if text.strip("\n").strip() != "":
+                                writer.write(text.strip("\n").strip())
+                                writer.write(
+                                    "\n----------------------------------------"
+                                )
+                        else:
+                            writer.write(text)
+                else:
+                    writer.write(
+                        "------------------{}------------------".format(category)
+                    )
+                    strip_mark = 0
+                    for cont in odiv:
+                        if "详细内容" in cont.text:
+                            strip_mark = 1
+                        text = cont.text.replace("\n\n\n", "\n")
+                        if "详细内容" in text:
+                            writer.write(
+                                "\n\n\n\n------------------简讯------------------\n"
+                            )
+                        try:
+                            text = text[: text.index("详细内容")]
+                        except:
+                            pass
+                        if strip_mark == 1:
+                            if text.strip("\n").strip() != "":
+                                writer.write(text.strip("\n").strip())
+                                writer.write(
+                                    "\n----------------------------------------"
+                                )
+        else:
+            content = urllib.request.urlopen(request).read().decode("utf8")
+            fh = open("./cnbeta.html", "w")  # 将文件写入到当前目录中
+            fh.write(content)
+            fh.close()
         print("\nEnjoy it\n:)")
     except Exception as e:
         print(e)
 
 
-get_text("http://cnbeta.com")
+get_text("https://www.cnbeta.com.tw")
 
 print("All recent cnbeta data get, :)!!!")
