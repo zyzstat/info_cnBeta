@@ -1,6 +1,16 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import sys
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    # Legacy Python that doesn't verify HTTPS certificates by default
+    pass
+else:
+    # Handle target environment that doesn't support HTTPS verification
+    ssl._create_default_https_context = _create_unverified_https_context
 
 
 def handle_request(url):
@@ -13,15 +23,15 @@ def handle_request(url):
 
 
 def get_text(href):
-    #     img_txt = input(
-    #         """
-    # HTML or Just TEXT ?
-    # H -> HTML
-    # T -> TEXT\n
-    # >>"""
-    #     )
-    img_txt = "T"
-    if img_txt not in ["H", "T"]:
+    img_txt = input(
+        """
+HTML or Just TEXT ?
+H -> HTML
+T -> TEXT\n
+>>"""
+    )
+    # img_txt = "T"
+    if img_txt not in ["H", "T"] and img_txt != "":
         raise Exception("Input error, try again")
     category = input(
         """
@@ -63,8 +73,8 @@ Enter a category:
             raise (Exception("Input error, try again"))
         print("Wait for it")
         request = handle_request(href)
-        if img_txt == "T":
-            content = urllib.request.urlopen(request).read().decode("utf8")
+        if img_txt == "T" or img_txt == "":
+            content = urllib.request.urlopen(request).read().decode("utf-8")
             soup = BeautifulSoup(content, "lxml")
             odiv = soup.find_all("div", class_="item")
             with open("./cnbeta_txt.txt", "w") as writer:
