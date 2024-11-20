@@ -43,8 +43,7 @@ Enter a category:
                     comic -> 动漫
                     funny -> 趣闻
                     science -> 科学
-                    soft -> 软件
-                    Enter -> Only recent News\n
+                    soft -> 软件\n
 >>"""
     )
     try:
@@ -68,7 +67,6 @@ Enter a category:
             "funny",
             "science",
             "soft",
-            "",
         ]:
             raise (Exception("Input error, try again"))
         print("Wait for it")
